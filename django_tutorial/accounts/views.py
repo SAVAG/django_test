@@ -4,7 +4,6 @@ from rest_framework import viewsets
 from django_tutorial.accounts.models import Profile
 from django_tutorial.accounts.serializers import UserSerializer, GroupSerializer, ProfileSerializer
 
-
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
@@ -14,6 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
+
     queryset = Profile.objects.filter(user__isnull=False).order_by('user__date_joined')
     serializer_class = ProfileSerializer
 
