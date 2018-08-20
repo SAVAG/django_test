@@ -29,13 +29,13 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         """
         user_data = validated_data.pop('user')
         user = UserSerializer.create(UserSerializer(), validated_data=user_data)
-        student, created = Profile.objects.update_or_create(
+        profile, created = Profile.objects.update_or_create(
             user=user,
             age=validated_data.pop('age'),
             gender=validated_data.pop('gender'),
             interests=validated_data.pop('interests')
         )
-        return student
+        return profile
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):

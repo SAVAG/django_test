@@ -15,11 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, re_path
-from rest_framework import routers
+from rest_framework import routers, permissions
 from rest_framework.authtoken import views
 from rest_framework.documentation import include_docs_urls
 
-from django_tutorial import settings
 from django_tutorial.accounts import views as accounts_views
 
 router = routers.DefaultRouter()
@@ -39,7 +38,7 @@ urlpatterns = [
         include_docs_urls(
             title='My Django tutorial docs',
             authentication_classes=[],
-            permission_classes=[settings.REST_FRAMEWORK['DEFAULT_PERMISSION_CLASSES']],
+            permission_classes=[permissions.AllowAny],
             public=True
         ),
     ),

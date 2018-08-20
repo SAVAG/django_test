@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from django_tutorial.accounts.models import Profile
 from django_tutorial.accounts.serializers import UserSerializer, GroupSerializer, ProfileSerializer
 
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
